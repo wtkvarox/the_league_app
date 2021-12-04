@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_league_1"
+        android:icon="@drawable/soccer_ball"
+        android:title="Liga Española" />
+
+    <item
+        android:id="@+id/navigation_league_2"
+        android:icon="@drawable/soccer_ball"
+        android:title="Liga Inglesa" />
+
+    <item
+        android:id="@+id/navigation_league_3"
+        android:icon="@drawable/soccer_ball"
+        android:title="Liga Francesa" />
+
+    <item
+        android:id="@+id/navigation_league_4"
+        android:icon="@drawable/soccer_ball"
+        android:title="UEFA" />
+</menu>
