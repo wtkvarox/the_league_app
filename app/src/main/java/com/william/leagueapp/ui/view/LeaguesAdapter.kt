@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.william.leagueapp.R
-import com.william.leagueapp.data.model.Team
+import com.william.leagueapp.data.model.ItemDataState
 import kotlinx.android.synthetic.main.item_league.view.img_team_badge
 import kotlinx.android.synthetic.main.item_league.view.item
 import kotlinx.android.synthetic.main.item_league.view.txt_name
 import kotlinx.android.synthetic.main.item_league.view.txt_stadium
 
-class LeaguesAdapter(private val leagues: List<Team>) :
+class LeaguesAdapter(private val leagues: List<ItemDataState.Team>) :
     RecyclerView.Adapter<LeaguesAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,7 +31,7 @@ class LeaguesAdapter(private val leagues: List<Team>) :
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(team: Team) {
+        fun bind(team: ItemDataState.Team) {
             itemView.txt_name.text = team.strTeam
             itemView.txt_stadium.text = team.strStadium
             itemView.item.setOnClickListener {

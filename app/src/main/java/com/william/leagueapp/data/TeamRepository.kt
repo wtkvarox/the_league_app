@@ -1,10 +1,8 @@
 package com.william.leagueapp.data
 
+import com.william.leagueapp.data.model.ItemDataState
 import com.william.leagueapp.data.model.NextEventModel
-import com.william.leagueapp.data.model.Team
-import com.william.leagueapp.data.model.TeamModel
 import com.william.leagueapp.data.model.TeamProvider
-import com.william.leagueapp.data.model.Result
 import com.william.leagueapp.data.network.TeamService
 import javax.inject.Inject
 
@@ -14,7 +12,7 @@ class TeamRepository @Inject constructor(
     private val teamDao: TeamDao
 ) {
 
-    suspend fun getAllTeamsLeague(league: String): TeamModel {
+    suspend fun getAllTeamsLeague(league: String): ItemDataState.TeamModel {
 
         val localData = teamDao.findAllTeamsFromLeague(league)
 
@@ -24,7 +22,7 @@ class TeamRepository @Inject constructor(
             quoteProvider.teams = response
             response
         } else {
-            TeamModel(localData)
+            ItemDataState.TeamModel(localData)
         }
     }
 
@@ -35,7 +33,7 @@ class TeamRepository @Inject constructor(
         return response
     }
 
-    fun getDetailTeamLeague(idTeam: Int): Team? {
+    fun getDetailTeamLeague(idTeam: Int): ItemDataState.Team? {
         return teamDao.findTeamLeague(idTeam)
     }
 }

@@ -5,6 +5,6 @@ import javax.inject.Singleton
 
 @Singleton
 class TeamProvider @Inject constructor() {
-    var teams: TeamModel = TeamModel(emptyList())
+    var teams: ItemDataState.TeamModel = ItemDataState.TeamModel(emptyList())
     var results: NextEventModel = NextEventModel(emptyList())
 }

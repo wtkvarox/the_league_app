@@ -24,7 +24,7 @@ class DetailViewActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        teamViewModel.team.observe(this, { team ->
+        teamViewModel.team.observe(this) { team ->
             binding.txtName.text = team.strTeam
             binding.txtDescription.text = team.strDescriptionES
             binding.txtYearFoundation.text = "Fundado en el año: ${team.intFormedYear.toString()}"
@@ -49,7 +49,7 @@ class DetailViewActivity : AppCompatActivity() {
             binding.imgYoutube.setOnClickListener {
                 launchIntent(team.strYoutube)
             }
-        })
+        }
 
         teamViewModel.nextEventsModel.observe(this, {
             binding.viewPagerImages.adapter =

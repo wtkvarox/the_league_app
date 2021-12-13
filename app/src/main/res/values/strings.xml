@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">The League App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="league_spanish">Liga Española</string>
+    <string name="league_english">Liga Inglesa</string>
+    <string name="league_french">Liga Francesa</string>
+    <string name="uefa_champions_league">UEFA</string>
+    <string name="select_date">Selecciona una fecha</string>
 </resources>

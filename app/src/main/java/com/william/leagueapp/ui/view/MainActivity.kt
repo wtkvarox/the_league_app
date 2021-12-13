@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.mauker.materialsearchview.MaterialSearchView
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.william.leagueapp.Constants
 import com.william.leagueapp.Constants.Companion.LEAGUE_ENGLISH_PREMIER
 import com.william.leagueapp.Constants.Companion.LEAGUE_FRENCH
 import com.william.leagueapp.Constants.Companion.LEAGUE_SPANISH
@@ -19,14 +18,11 @@ import com.william.leagueapp.R
 import com.william.leagueapp.databinding.ActivityMainBinding
 import com.william.leagueapp.ui.viewmodel.TeamViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var retrofit: Retrofit
     private lateinit var rvLeagues: RecyclerView
     private val teamViewModel: TeamViewModel by viewModels()
 
@@ -38,12 +34,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         setSupportActionBar(binding.homeToolbar)
 
-        rvLeagues = binding.recyclerViewLeagues
+        binding.txtTitleAb.text = getString(R.string.league_spanish)
 
-        retrofit = Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        rvLeagues = binding.recyclerViewLeagues
 
         configSwipeRefresh()
         configSearchBar()
@@ -51,21 +44,25 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_league_1 -> {
+                    binding.txtTitleAb.text = getString(R.string.league_spanish)
                     teamViewModel.getListTeams(LEAGUE_SPANISH)
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.navigation_league_2 -> {
+                    binding.txtTitleAb.text = getString(R.string.league_english)
                     teamViewModel.getListTeams(LEAGUE_ENGLISH_PREMIER)
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.navigation_league_3 -> {
+                    binding.txtTitleAb.text = getString(R.string.league_french)
                     teamViewModel.getListTeams(LEAGUE_FRENCH)
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.navigation_league_4 -> {
+                    binding.txtTitleAb.text = getString(R.string.uefa_champions_league)
                     teamViewModel.getListTeams(UEFA_CHAMPIONS_LEAGUE)
                     return@setOnItemSelectedListener true
                 }
@@ -135,7 +132,7 @@ class MainActivity : AppCompatActivity() {
     private fun calendarOnClickListener() = View.OnClickListener {
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Slecciona una fecha")
+                .setTitleText(getString(R.string.select_date))
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build()
 
